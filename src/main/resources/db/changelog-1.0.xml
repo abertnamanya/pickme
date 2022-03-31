@@ -6,4 +6,41 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
 <!-- add here new entities-->
+	<changeSet author="abertnamanya" id="0012312-users">
+		<createTable tableName="users">
+			<column autoIncrement="true" name="user_id" type="INT">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column defaultValue="" name="system_id" type="VARCHAR(50)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="username" type="VARCHAR(50)"/>
+			<column name="password" type="VARCHAR(128)"/>
+			<column name="salt" type="VARCHAR(128)"/>
+			<column name="secret_question" type="VARCHAR(255)"/>
+			<column name="secret_answer" type="VARCHAR(255)"/>
+			<column defaultValueNumeric="0" name="creator" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="date_created" type="datetime">
+				<constraints nullable="false"/>
+			</column>
+			<column name="changed_by" type="INT"/>
+			<column name="date_changed" type="datetime"/>
+			<column defaultValueBoolean="false" name="retired" type="BIT(1)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="retired_by" type="INT"/>
+			<column name="date_retired" type="datetime"/>
+			<column name="retire_reason" type="VARCHAR(255)"/>
+			<column name="uuid" type="CHAR(38)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="activation_key" type="VARCHAR(255)"/>
+			<column name="email" type="VARCHAR(255)">
+				<constraints unique="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
 </databaseChangeLog>
